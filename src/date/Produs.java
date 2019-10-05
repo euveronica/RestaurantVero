@@ -1,71 +1,101 @@
 package date;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "produse")
 public class Produs {
-	
-	public String categorie;
-	public String numeProdus;
-	public String descriereProdus;
-	public String pretUnitar;
-	public String stoc;
-	public String poza;
-	public String nrPortii;
-	
-	
-	public Produs(String categorie, String numeProdus, String descriereProdus, String pretUnitar,
-			String poza, String nrPortii,  String stoc) {
-		super();
-		this.categorie = categorie;
-		this.numeProdus = numeProdus;
-		this.descriereProdus = descriereProdus;
-		this.pretUnitar = pretUnitar;
-		this.stoc = stoc;
-		this.poza = poza;
-		this.nrPortii = nrPortii;
-	}
-	public String getCategorie() {
-		return categorie;
-	}
-	public void setCategorie(String categorie) {
-		this.categorie = categorie;
-	}
-	public String getNumeProdus() {
-		return numeProdus;
-	}
-	public void setNumeProdus(String numeProdus) {
-		this.numeProdus = numeProdus;
-	}
-	public String getDescriereProdus() {
-		return descriereProdus;
-	}
-	public void setDescriereProdus(String descriereProdus) {
-		this.descriereProdus = descriereProdus;
-	}
-	public String getPretUnitar() {
-		return pretUnitar;
-	}
-	public void setPretUnitar(String pretUnitar) {
-		this.pretUnitar = pretUnitar;
-	}
-	public String getStoc() {
-		return stoc;
-	}
-	public void setStoc(String stoc) {
-		this.stoc = stoc;
-	}
-	public String getPoza() {
-		return poza;
-	}
-	public void setPoza(String poza) {
-		this.poza = poza;
-	}
-	public String getNrPortii() {
-		return nrPortii;
-	}
-	public void setNrPortii(String nrPortii) {
-		this.nrPortii = nrPortii;
-	}
-	
-	
-	
-	
+	    private long id_produs;
+	    private String nume_categorie;
+	    private String nume_produs;
+	    private String descriere_produs;
+	    private float pret_unitar;
+	    private int nivel_existent;
+	    private int numar_portii;
+	        
+	    	        
+		public Produs() {
+			super();
+		}
+
+
+		@Id
+		@Column(name = "id_produs")
+		@GeneratedValue(strategy = GenerationType.IDENTITY)
+	    public long getId_produs() {
+			return id_produs;
+		}
+
+
+		public void setId_produs(long id_produs) {
+			this.id_produs = id_produs;
+		}
+
+
+		public String getNume_categorie() {
+			return nume_categorie;
+		}
+
+		public void setNume_categorie(String nume_categorie) {
+			this.nume_categorie = nume_categorie;
+		}
+
+
+		public String getNume_produs() {
+			return nume_produs;
+		}
+
+		public void setNume_produs(String nume_produs) {
+			this.nume_produs = nume_produs;
+		}
+
+
+
+		public String getDescriere_produs() {
+			return descriere_produs;
+		}
+
+
+
+		public void setDescriere_produs(String descriere_produs) {
+			this.descriere_produs = descriere_produs;
+		}
+
+
+
+		public float getPret_unitar() {
+			return pret_unitar;
+		}
+
+
+
+		public void setPret_unitar(float pret_unitar) {
+			this.pret_unitar = pret_unitar;
+		}
+
+
+
+		public int getNivel_existent() {
+			return nivel_existent;
+		}
+
+
+
+		public void setNivel_existent(int nivel_existent) {
+			this.nivel_existent = nivel_existent;
+		}
+
+
+
+		public int getNumar_portii() {
+			return numar_portii;
+		}
+
+
+
+		public void setNumar_portii(int numar_portii) {
+			this.numar_portii = numar_portii;
+		}
+		
+		
+	    
 }

@@ -2,6 +2,8 @@
     pageEncoding="ISO-8859-1"%>
     <%@ page import="java.util.List" %>
     <%@ page import="date.Produs" %>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>   
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,34 +19,31 @@
 <br/>
 <br/><br/>
 
-<%
-String lista= pageContext.getAttribute("lista", PageContext.SESSION_SCOPE).toString();
-List listaProduse= (List) pageContext.getAttribute("listaProduse", PageContext.SESSION_SCOPE);
-%>
-<%=lista %>
+
 <table id="tblExample" border=1  style="width:100%">
 <tr>
 	<th> Categorie</th>
 	<th> Nume Produs</th>
 	<th> Descriere Produs</th>
 	<th> Pret Unitar</th>
-	<th> Poza</th>
+	<!-- <th> Poza</th> -->
 	<th> Numar portii</th>
 	<th> Adauga la comanda</th>
 </tr>
 
-<% for(int i=0; i < listaProduse.size();i++) { %>
-<% Produs produs = (Produs) listaProduse.get(i); %>
+< c:forEach var="produse" items="${produse}" >
 <tr>
-	<td style="background-color:Salmon;"> <b> <%=produs.getCategorie() %></b></td>
-	<td> <%=produs.getNumeProdus() %> </td>
-	<td> <%=produs.getDescriereProdus() %></td>
-	<td > <%=produs.getPretUnitar() %></td>
-	<td> <img src = "/images/"> <%=produs.getPoza() %></td>
-	 <td> <input type="select" value=0> <%=produs.getNrPortii() %></td>
+	<td style="background-color:Salmon;"> <b> ${produse.getNume_categorie()}</b></td>
+	<td> ${produse.getNume_produs()} </td>
+	<td> ${produse.getDescriere_produs()}</td>
+	<td > ${produse.getPret_unitar()}</td>
+	<!-- 
+	<td> <img src = "/images/"> </td>  	-->
+	 <td> <input type="select" value=0> ${produse.getNumar_portii()}</td>
 	<td><input type="button" value="adauga"> </td>
+
 </tr>
-<% } %>
+</c:forEach>
 
 </table> 
 <script type="text/javascript">

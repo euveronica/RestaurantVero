@@ -12,9 +12,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.Hibernate;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
 import date.Produs;
 import date.ProduseCSVParser;
 import parser.CSVParserTest;
+import util.HibernateUtil;
 
 /**
  * Servlet implementation class LoadData
@@ -22,6 +28,7 @@ import parser.CSVParserTest;
 @WebServlet("/LoadData")
 public class LoadData extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	protected SessionFactory sessionFactory;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -37,27 +44,36 @@ public class LoadData extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath()).append("***Data este "+new java.util.Date());
-		
-		request.getSession().setAttribute("lista", "");
-		//TODO Implement db reading
-//		Produs p1 = new Produs("supe", "ciorba de vacuta", "ciorba cu vacuta, legume", "9.50",  "poza ciorba", "1", "100");
-//		Produs p2 = new Produs("supe", "supa de rosii", "supa", "12.00", "poza supa", "1", "100");
-//		Produs p3 = new Produs("supe", "supa de cartofi", "supa", "10.50", "poza supa", "1", "100");
-//		
-//		List listaProduse = new ArrayList<Produs>();
-//		listaProduse.add(p1);
-//		listaProduse.add(p2);
-//		listaProduse.add(p3);
-//		request.getSession().setAttribute("listaProduse", listaProduse);
-		
-		File sursa = new File ("c:\\meniu\\produse.csv");
-        ProduseCSVParser parser = new ProduseCSVParser(sursa);
-        parser.parse();
-    	request.getSession().setAttribute("listaProduse", parser.getLista());
-		
-		
+
+		SessionFactory factory = HibernateUtil.getSessionfactory();
+		Session session = factory.openSession();
+		try {
+			Query query = session.createQuery("from Produs");
+			List produse = query.list();
+			request.setAttribute("produse", produse);
+		} finally {
+			session.close();
+				}
 		RequestDispatcher rd = request.getRequestDispatcher("/meniu.jsp");
 		 rd.forward(request, response);
+		
+		
+//		java.util.List listaProduse = Hibernate.getListData(data.getLista());
+//			
+//		Produs produs = new Produs();
+//		request.getServletContext().setAttribute("listaProduse", produs);
+//		
+//		Session session = sessionFactory.openSession();
+//   	       
+//        Produs produs = session.get(Produs.class, produsId);
+		
+//		File sursa = new File ("c:\\meniu\\produse.csv");
+//        ProduseCSVParser parser = new ProduseCSVParser(sursa);
+//        parser.parse();
+//    	request.getSession().setAttribute("listaProduse", parser.getLista());
+		
+		
+		
 		
 		 //response.sendRedirect(meniu.jsp);
 		

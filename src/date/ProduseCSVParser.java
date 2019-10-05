@@ -26,8 +26,8 @@ public class ProduseCSVParser extends CSVParser {
 	@Override
 	protected void getTokensFromLine(String[] tokens) {
 		// TODO Auto-generated method stub
-		Produs produs = new Produs(tokens[0], tokens[1], tokens[2], tokens[3],tokens[4], tokens[5], tokens[6]);
-		lista.add(produs);
+//		Produs produs = new Produs(tokens[0], tokens[1], tokens[2], tokens[3],tokens[4], tokens[5], tokens[6]);
+//		lista.add(produs);
 		
 	}
 
