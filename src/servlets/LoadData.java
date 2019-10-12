@@ -58,24 +58,6 @@ public class LoadData extends HttpServlet {
 		 rd.forward(request, response);
 		
 		
-//		java.util.List listaProduse = Hibernate.getListData(data.getLista());
-//			
-//		Produs produs = new Produs();
-//		request.getServletContext().setAttribute("listaProduse", produs);
-//		
-//		Session session = sessionFactory.openSession();
-//   	       
-//        Produs produs = session.get(Produs.class, produsId);
-		
-//		File sursa = new File ("c:\\meniu\\produse.csv");
-//        ProduseCSVParser parser = new ProduseCSVParser(sursa);
-//        parser.parse();
-//    	request.getSession().setAttribute("listaProduse", parser.getLista());
-		
-		
-		
-		
-		 //response.sendRedirect(meniu.jsp);
 		
 		
 	}

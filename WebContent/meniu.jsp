@@ -26,19 +26,18 @@
 	<th> Nume Produs</th>
 	<th> Descriere Produs</th>
 	<th> Pret Unitar</th>
-	<!-- <th> Poza</th> -->
+	<th> Poza</th> 
 	<th> Numar portii</th>
 	<th> Adauga la comanda</th>
 </tr>
 
-< c:forEach var="produse" items="${produse}" >
+<c:forEach var="produse" items="${produse}" >
 <tr>
 	<td style="background-color:Salmon;"> <b> ${produse.getNume_categorie()}</b></td>
 	<td> ${produse.getNume_produs()} </td>
 	<td> ${produse.getDescriere_produs()}</td>
 	<td > ${produse.getPret_unitar()}</td>
-	<!-- 
-	<td> <img src = "/images/"> </td>  	-->
+	<td> <img src="images/index.jpg" width="24" height="16"> </td>  
 	 <td> <input type="select" value=0> ${produse.getNumar_portii()}</td>
 	<td><input type="button" value="adauga"> </td>
 

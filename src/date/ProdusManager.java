@@ -65,7 +65,7 @@ public class ProdusManager  {
 	        // code to get a book
 	    	Session session = sessionFactory.openSession();
 	    	 
-	        long produsId = 15;
+	    	Integer produsId = 15;
 	       Produs produs = session.get(Produs.class, produsId);
 	     
 	        System.out.println("Categorie: " + produs.getNume_categorie());

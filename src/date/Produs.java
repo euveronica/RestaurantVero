@@ -4,29 +4,45 @@ import javax.persistence.*;
 @Entity
 @Table(name = "produse")
 public class Produs {
-	    private long id_produs;
+	    private Integer id_produs;
 	    private String nume_categorie;
 	    private String nume_produs;
 	    private String descriere_produs;
-	    private float pret_unitar;
-	    private int nivel_existent;
-	    private int numar_portii;
+	    private Float pret_unitar;
+	    private Integer nivel_existent;
+	    private Integer numar_portii;
+	    private String poza;
 	        
 	    	        
+		
+
 		public Produs() {
 			super();
+		}
+
+
+		public Produs(String nume_categorie, String nume_produs, String descriere_produs, Float pret_unitar,
+				Integer nivel_existent, Integer numar_portii, String poza) {
+			super();
+			this.nume_categorie = nume_categorie;
+			this.nume_produs = nume_produs;
+			this.descriere_produs = descriere_produs;
+			this.pret_unitar = pret_unitar;
+			this.nivel_existent = nivel_existent;
+			this.numar_portii = numar_portii;
+			this.poza = poza;
 		}
 
 
 		@Id
 		@Column(name = "id_produs")
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
-	    public long getId_produs() {
+	    public Integer getId_produs() {
 			return id_produs;
 		}
 
 
-		public void setId_produs(long id_produs) {
+		public void setId_produs(Integer id_produs) {
 			this.id_produs = id_produs;
 		}
 
@@ -62,40 +78,48 @@ public class Produs {
 
 
 
-		public float getPret_unitar() {
+		public Float getPret_unitar() {
 			return pret_unitar;
 		}
 
 
 
-		public void setPret_unitar(float pret_unitar) {
+		public void setPret_unitar(Float pret_unitar) {
 			this.pret_unitar = pret_unitar;
 		}
 
 
 
-		public int getNivel_existent() {
+		public Integer getNivel_existent() {
 			return nivel_existent;
 		}
 
 
 
-		public void setNivel_existent(int nivel_existent) {
+		public void setNivel_existent(Integer nivel_existent) {
 			this.nivel_existent = nivel_existent;
 		}
 
 
 
-		public int getNumar_portii() {
+		public Integer getNumar_portii() {
 			return numar_portii;
 		}
 
 
 
-		public void setNumar_portii(int numar_portii) {
+		public void setNumar_portii(Integer numar_portii) {
 			this.numar_portii = numar_portii;
 		}
-		
+		public String getPoza() {
+			return poza;
+		}
+
+
+		public void setPoza(String poza) {
+			this.poza = poza;
+		}
+
 		
 	    
 }
